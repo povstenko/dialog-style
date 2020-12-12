@@ -6,4 +6,4 @@ Write a program using "skins" (main window, buttons). Implement animation by shi
 
 ![2](Screenshots/style2.png)
 
-![2](Screenshots/style2.png)
+![3](Screenshots/style3.png)
