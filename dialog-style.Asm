@@ -23,7 +23,13 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	.if eax==WM_INITDIALOG
 
 	.elseif eax==WM_COMMAND
-
+		.if wParam == IDC_BTN1
+			invoke MessageBox,0,0,0,MB_OK
+		.elseif wParam == IDC_BTN2
+			invoke MessageBox,0,0,0,MB_OK
+		.elseif wParam == IDC_BTN3
+			invoke MessageBox,0,0,0,MB_OK
+		.endif
 	.elseif eax==WM_CLOSE
 		invoke EndDialog,hWin,0
 	.else
