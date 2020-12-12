@@ -23,27 +23,39 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 	.if eax==WM_INITDIALOG
 		invoke GetDC,hWin
 		mov hdc,eax
+		
+		invoke CreateRectRgn,500,0,700,700
+		mov hrBg,eax 
 	.elseif eax==WM_COMMAND
 		.if wParam == IDC_BTN1
-			
+;			invoke CreateSolidBrush,000ffh
+;			mov hBrush, eax
+;			invoke FillRgn,hdc,hrBg,hBrush
+;			
+;			invoke GetDlgItem,hWin,IDC_BTN1
+;			invoke RedrawWindow,eax,0,0,RDW_VALIDATE		
+;			
 			mov x,0
-			mov y,0
-			.while x<500
+			mov y,50
+			.while x<600
 				.while y<500
-					invoke MulDiv,y,0ffh,500
+					invoke MulDiv,y,0ffh,600
 					invoke SetPixel,hdc,x,y,eax 
 					inc y
 				.endw
 				inc x
-				mov y,0
+				mov y,50
 			.endw
+			
+;			invoke SetTextColor,eax, 0ffh
+				
 		.elseif wParam == IDC_BTN2
 			mov x,0
-			mov y,0
-			.while x<700
+			mov y,50
+			.while x<600
 				.while y<500
 					; синій зменшується, а червоний та зелений збільшуються
-					invoke MulDiv,y,0ffh,500
+					invoke MulDiv,y,0ffh,600
 					mov ecx,0ffh ; ecx = 255
 					sub ecx,eax  ; ecx - "pos gradient"
 					shl ecx,16 	; ecx -> blue (<< 16)
@@ -55,10 +67,19 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 					inc y
 				.endw
 				inc x
-				mov y,0
+				mov y,50
 			.endw
 		.elseif wParam == IDC_BTN3
-			invoke MessageBox,0,0,0,MB_OK
+			mov x,0
+			mov y,50
+			.while x<600
+				.while y<500
+					invoke SetPixel,hdc,x,y,0ae82e8h
+					inc y
+				.endw
+				inc x
+				mov y,50
+			.endw
 		.endif
 	.elseif eax==WM_CLOSE
 		invoke ReleaseDC,hWin,hdc
