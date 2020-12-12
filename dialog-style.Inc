@@ -10,6 +10,9 @@ includelib user32.lib
 includelib Comctl32.lib
 includelib shell32.lib
 
+include gdi32.inc
+includelib gdi32.lib
+
 DlgProc			PROTO	:HWND,:UINT,:WPARAM,:LPARAM
 
 .const
@@ -25,7 +28,7 @@ IDC_BTN3						equ 1003
 ;#########################################################################
 .data
 
-hdc1  dd 	0	
+hdc  dd 	0	
 x	dd 	0	
 y	dd 	0
 
