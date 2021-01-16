@@ -27,14 +27,7 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 		invoke CreateRectRgn,500,0,700,700
 		mov hrBg,eax 
 	.elseif eax==WM_COMMAND
-		.if wParam == IDC_BTN1
-;			invoke CreateSolidBrush,000ffh
-;			mov hBrush, eax
-;			invoke FillRgn,hdc,hrBg,hBrush
-;			
-;			invoke GetDlgItem,hWin,IDC_BTN1
-;			invoke RedrawWindow,eax,0,0,RDW_VALIDATE		
-;			
+		.if wParam == IDC_BTN1			
 			mov x,0
 			mov y,50
 			.while x<600
@@ -46,8 +39,6 @@ DlgProc proc hWin:HWND,uMsg:UINT,wParam:WPARAM,lParam:LPARAM
 				inc x
 				mov y,50
 			.endw
-			
-;			invoke SetTextColor,eax, 0ffh
 				
 		.elseif wParam == IDC_BTN2
 			mov x,0
